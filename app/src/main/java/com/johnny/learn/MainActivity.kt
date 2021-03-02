@@ -1,29 +1,32 @@
 package com.johnny.learn
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.view.WindowCompat
 import com.johnny.learn.data.exampleMainUiState
 import com.johnny.learn.ui.main.MainContent
+import com.johnny.learn.ui.text.TextViewActivity
 import com.johnny.learn.ui.theme.LearnComposeTheme
 
+/**
+ * 主页
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        WindowCompat.setDecorFitsSystemWindows(window, false)
+        //这个就是整个布局的显示体 可以理解为root
         setContent {
+
+            /**
+             * 主体
+             */
             LearnComposeTheme {
-                // A surface container using the 'background' color from the theme
-//                Surface(color = MaterialTheme.colors.background) {
-//                    Greeting("Android")
-//                }
-                MainContent(exampleMainUiState.datas)
+                /**
+                 * 加载自定义主体 view
+                 */
+                MainContent(exampleMainUiState.datas,this@MainActivity)
             }
         }
     }
