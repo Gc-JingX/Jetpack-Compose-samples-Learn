@@ -24,7 +24,7 @@ private val initMainDatas = listOf(
     MainListDto(0, "文本"),
     MainListDto(1, "按钮"),
     MainListDto(2, "输入框"),
-    MainListDto(3, "布局"),
+    MainListDto(3, "图片"),
 )
 
 val exampleMainUiState = MainUiState(

@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.johnny.learn.MainActivity
 import com.johnny.learn.entity.MainListDto
 import com.johnny.learn.ui.button.ButtonViewActivity
+import com.johnny.learn.ui.image.ImageViewActivity
 import com.johnny.learn.ui.text.TextViewActivity
 import com.johnny.learn.ui.textfield.TextFieldActivity
 
@@ -88,6 +89,7 @@ fun toDoView(index: Int) {
             0 -> startActivity(Intent(this, TextViewActivity::class.java))//文本页面
             1 -> startActivity(Intent(this, ButtonViewActivity::class.java))//按钮页面页面
             2 -> startActivity(Intent(this, TextFieldActivity::class.java))//输入框页面页面
+            3 -> startActivity(Intent(this, ImageViewActivity::class.java))//图片页面页面
         }
     }
 
