@@ -21,6 +21,12 @@ import com.johnny.learn.ui.button.ButtonViewActivity
 import com.johnny.learn.ui.text.TextViewActivity
 import com.johnny.learn.ui.textfield.TextFieldActivity
 
+//函数带有 @Composable 注释。
+// 所有可组合函数都必须带有此注释；
+// 此注释可告知 Compose 编译器：
+// 此函数旨在将数据转换为界面
+
+
 var mContext: Context? = null
 
 @Composable
@@ -81,7 +87,7 @@ fun toDoView(index: Int) {
         when (index) {
             0 -> startActivity(Intent(this, TextViewActivity::class.java))//文本页面
             1 -> startActivity(Intent(this, ButtonViewActivity::class.java))//按钮页面页面
-            2 -> startActivity(Intent(this, TextFieldActivity::class.java))//按钮页面页面
+            2 -> startActivity(Intent(this, TextFieldActivity::class.java))//输入框页面页面
         }
     }
 
