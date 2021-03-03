@@ -1,4 +1,4 @@
-package com.johnny.learn.ui.text
+package com.johnny.learn.ui.button
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -10,12 +10,12 @@ import com.johnny.learn.ui.theme.LearnComposeTheme
  * Text 展示
  *
  */
-class TextViewActivity : AppCompatActivity() {
+class ButtonViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             LearnComposeTheme {
-                TextViewContent( )
+                BottonViewContent( )
             }
         }
     }

@@ -14,14 +14,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
+import com.johnny.learn.MainActivity
 import com.johnny.learn.entity.MainListDto
+import com.johnny.learn.ui.button.ButtonViewActivity
 import com.johnny.learn.ui.text.TextViewActivity
+import com.johnny.learn.ui.textfield.TextFieldActivity
+
+var mContext: Context? = null
 
 @Composable
 fun MainContent(
     mainList: List<MainListDto>,
     context: Context
 ) {
+    mContext = context
 //    Modifier 的参数
 //    clickable() 使可组合项响应用户输入。
 //    padding() 在元素周围留出空间。
@@ -33,25 +40,23 @@ fun MainContent(
         ) {
         mainList.forEachIndexed { index, data ->
 
-            CustomStyledText(data.showText, index, context)
+            CustomStyledText(data.showText, index)
         }
     }
 }
 
 @Composable
 fun CustomStyledText(
-    displayText: String, index: Int,
-    context: Context
+    displayText: String, index: Int
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                when (index) {
-                    0 -> {
-                        context.startActivity(Intent(context, TextViewActivity::class.java))
-                    }
-                }
+                /**
+                 * 点击操作
+                 */
+                toDoView(index)
 
             },
     ) {
@@ -62,7 +67,22 @@ fun CustomStyledText(
             overflow = TextOverflow.Ellipsis,
             maxLines = Int.MAX_VALUE
         )
-        Divider(color = Color.Gray)
+        Divider(color = Color.LightGray)
+    }
+
+}
+
+/**
+ * 页面跳转
+ */
+fun toDoView(index: Int) {
+
+    mContext?.run {
+        when (index) {
+            0 -> startActivity(Intent(this, TextViewActivity::class.java))//文本页面
+            1 -> startActivity(Intent(this, ButtonViewActivity::class.java))//按钮页面页面
+            2 -> startActivity(Intent(this, TextFieldActivity::class.java))//按钮页面页面
+        }
     }
 
 }

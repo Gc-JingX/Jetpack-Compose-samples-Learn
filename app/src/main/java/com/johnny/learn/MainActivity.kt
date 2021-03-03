@@ -1,12 +1,10 @@
 package com.johnny.learn
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import com.johnny.learn.data.exampleMainUiState
 import com.johnny.learn.ui.main.MainContent
-import com.johnny.learn.ui.text.TextViewActivity
 import com.johnny.learn.ui.theme.LearnComposeTheme
 
 /**

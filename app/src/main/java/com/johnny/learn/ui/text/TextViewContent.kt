@@ -1,11 +1,9 @@
 package com.johnny.learn.ui.text
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -33,8 +31,10 @@ import com.johnny.learn.entity.MainListDto
 fun TextViewContent() {
     /**
      * 默认会滚动
+     *
+     * 旧版本用这俩个 ScrollableRow 和 ScrollableColumn 新版本api已经被LazyColumn和 LazyRow取代
      */
-    LazyColumn {
+    LazyColumn(modifier = Modifier.fillMaxHeight()) {
         item {
             CustomStyledText(
                 "Test default text style"
@@ -119,7 +119,7 @@ fun TextViewContent() {
 
         }
         item {
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row(modifier = Modifier.fillParentMaxWidth(),horizontalArrangement=Arrangement.Center) {
                 Text(
                     text = "Test center aligned",
                     style = TextStyle(
