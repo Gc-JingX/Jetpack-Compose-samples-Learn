@@ -3,6 +3,9 @@ package com.johnny.learn.ui.image
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.primarySurface
 import com.johnny.learn.R
 import com.johnny.learn.ui.theme.LearnComposeTheme
 
@@ -16,7 +19,12 @@ class ImageViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LearnComposeTheme {
-                ImageViewContent( )
+                Scaffold(
+                    backgroundColor = MaterialTheme.colors.primarySurface,
+
+                ) {
+                    ImageViewContent( )
+                }
             }
         }
     }

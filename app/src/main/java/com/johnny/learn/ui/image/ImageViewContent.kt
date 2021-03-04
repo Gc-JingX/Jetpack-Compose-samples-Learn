@@ -1,24 +1,31 @@
 package com.johnny.learn.ui.image
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.rememberDraggableState
-import androidx.compose.foundation.gestures.rememberTransformableState
-import androidx.compose.foundation.gestures.transformable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.johnny.learn.R
 import com.johnny.learn.ui.theme.LearnComposeTheme
+import com.skydoves.landscapist.coil.CoilImage
+import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
+import coil.ImageLoader
+import coil.request.ImageRequest
+import com.johnny.learn.ui.image.view.StaggeredVerticalGrid
+import com.johnny.learn.ui.theme.background800
+import com.johnny.learn.ui.theme.shimmerHighLight
+import com.skydoves.landscapist.ShimmerParams
 
 @Composable
 fun ImageViewContent() {
@@ -27,19 +34,38 @@ fun ImageViewContent() {
      *
      * 旧版本用这俩个 ScrollableRow 和 ScrollableColumn 新版本api已经被LazyColumn和 LazyRow取代
      */
-    LazyColumn(modifier = Modifier
-        .fillMaxHeight()
-        .fillMaxWidth() ) {
-        item {
-            imageComposable()
+    Column(
+    ) {
+        StaggeredVerticalGrid(
+            maxColumnWidth = 220.dp,
+            modifier = Modifier.padding(4.dp)
+        ) {
+            PicPoster( )
+            PicPoster( )
+            PicPoster( )
+            PicPoster( )
         }
-//        item {
-//            ZoomableComposable(
-//            )
-//        }
-
-
     }
+//    LazyColumn(modifier = Modifier
+//        .fillMaxHeight()
+//        .fillMaxWidth() ) {
+//        item {
+//            imageComposable()
+//        }
+//        item {
+//            StaggeredVerticalGrid(
+//                maxColumnWidth = 220.dp,
+//                modifier = Modifier.padding(4.dp)
+//            ) {
+//                PicPoster( )
+//                PicPoster( )
+//                PicPoster( )
+//                PicPoster( )
+//            }
+//        }
+//
+//
+//    }
 
 }
 @Composable
@@ -56,40 +82,90 @@ fun imageComposable() {
         )
 
 }
+
 @Composable
-fun ZoomableComposable() {
-
-    var scale by remember { mutableStateOf(1f) }
-
-    var rotation by remember { mutableStateOf(0f) }
-    var offset by remember { mutableStateOf(Offset.Zero) }
-    val state = rememberTransformableState { zoomChange, offsetChange, rotationChange ->
-        scale *= zoomChange
-        rotation += rotationChange
-        offset += offsetChange
-    }
-
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
+fun PicPoster(
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        modifier = modifier
+            .padding(6.dp)
+            .clickable(
+                onClick = { }
+            ),
+        elevation = 8.dp,
+        shape = RoundedCornerShape(8.dp)
     ) {
+        //约束
+        ConstraintLayout {
 
-        Image(
-            painter = painterResource(id = R.drawable.test),
-            contentDescription = null, // decorative
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .transformable(state = state)
-                        .graphicsLayer(
-                            scaleX = scale,
-                            scaleY = scale,
-//                            rotationZ = rotation,
-                            translationX = offset.x,
-                            translationY = offset.y
-                        ),)
+            val (image, title, content) = createRefs()
+
+//            CoilImage(
+//                imageModel = poster.poster,
+//                modifier = Modifier.constrainAs(image) {
+//                    centerHorizontallyTo(parent)
+//                    top.linkTo(parent.top)
+//                }.aspectRatio(0.8f),
+//                // shows a progress indicator when loading an image.
+//                loading = {
+//                    ConstraintLayout(
+//                        modifier = Modifier.fillMaxSize()
+//                    ) {
+//                        val indicator = createRef()
+//                        CircularProgressIndicator(
+//                            modifier = Modifier.constrainAs(indicator) {
+//                                top.linkTo(parent.top)
+//                                bottom.linkTo(parent.bottom)
+//                                start.linkTo(parent.start)
+//                                end.linkTo(parent.end)
+//                            }
+//                        )
+//                    }
+//                },
+//                // shows an error text message when request failed.
+//                failure = {
+//                    Text(text = "image request failed.")
+//                })
+            CoilImage(
+                imageModel = R.drawable.test,
+                modifier = Modifier
+                    .constrainAs(image) {
+                        centerHorizontallyTo(parent)
+                        top.linkTo(parent.top)
+                    },
+//                    .aspectRatio(0.8f),
+//                contentScale = ContentScale.FillWidth,
+                circularRevealedEnabled = true,
+                shimmerParams = ShimmerParams(
+                    baseColor = background800,
+                    highlightColor = shimmerHighLight
+                )
+            )
+            Text(
+                text = "哈哈哈",
+                style = MaterialTheme.typography.h6,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .constrainAs(title) {
+                        centerHorizontallyTo(parent)
+                        top.linkTo(image.bottom)
+                    }
+                    .padding(8.dp)
+            )
+            Text(
+                text = "2021年3月4日14:43:00",
+                style = MaterialTheme.typography.body1,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .constrainAs(content) {
+                        centerHorizontallyTo(parent)
+                        top.linkTo(title.bottom)
+                    }
+                    .padding(horizontal = 8.dp)
+                    .padding(bottom = 12.dp)
+            )
+        }
     }
 }
 
