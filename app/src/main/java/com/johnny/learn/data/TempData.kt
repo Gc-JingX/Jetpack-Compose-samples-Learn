@@ -16,18 +16,35 @@
 
 package com.johnny.learn.data
 
+import android.content.Context
 import com.johnny.learn.entity.MainListDto
+import com.johnny.learn.ui.button.ButtonViewActivity
+import com.johnny.learn.ui.dataview.DataView1Activity
+import com.johnny.learn.ui.image.ImageViewActivity
+import com.johnny.learn.ui.layout.BoxActivity
+import com.johnny.learn.ui.layout.ColumActivity
+import com.johnny.learn.ui.layout.ConstraintActivity
+import com.johnny.learn.ui.layout.RowActivity
 import com.johnny.learn.ui.main.state.MainUiState
+import com.johnny.learn.ui.text.TextViewActivity
+import com.johnny.learn.ui.textfield.TextFieldActivity
+import java.lang.RuntimeException
 
 
 private val initMainDatas = listOf(
-    MainListDto(0, "文本"),
-    MainListDto(1, "按钮"),
-    MainListDto(2, "输入框"),
-    MainListDto(3, "图片"),
+    MainListDto(0, "文本", TextViewActivity::class.java),
+    MainListDto(1, "按钮", ButtonViewActivity::class.java),
+    MainListDto(2, "输入框", TextFieldActivity::class.java),
+    MainListDto(3, "图片", ImageViewActivity::class.java),
+    MainListDto(4, "页面数据更新", DataView1Activity::class.java),
+    MainListDto(5, "约束布局", ConstraintActivity::class.java),
+    MainListDto(6, "横向布局", RowActivity::class.java),
+    MainListDto(7, "纵向布局", ColumActivity::class.java),
+    MainListDto(8, "Box布局", BoxActivity::class.java),
 )
 
 val exampleMainUiState = MainUiState(
     initMainDatas = initMainDatas,
 )
+
 

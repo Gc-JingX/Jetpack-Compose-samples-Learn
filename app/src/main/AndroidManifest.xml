@@ -24,6 +24,11 @@
         <activity android:name=".ui.button.ButtonViewActivity"/>
         <activity android:name=".ui.textfield.TextFieldActivity"/>
         <activity android:name=".ui.image.ImageViewActivity"/>
+        <activity android:name=".ui.dataview.DataView1Activity"/>
+        <activity android:name=".ui.layout.BoxActivity"/>
+        <activity android:name=".ui.layout.ColumActivity"/>
+        <activity android:name=".ui.layout.ConstraintActivity"/>
+        <activity android:name=".ui.layout.RowActivity"/>
     </application>
 
 </manifest>

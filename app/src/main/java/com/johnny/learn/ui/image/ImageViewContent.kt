@@ -169,6 +169,11 @@ fun PicPoster(
     }
 }
 
+/**
+ *
+ *
+ * 加 @Preview 这个可以实时预览，无其他作用
+ */
 
 @Preview
 @Composable
