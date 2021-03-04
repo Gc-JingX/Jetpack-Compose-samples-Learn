@@ -8,9 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -19,21 +17,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.johnny.learn.R
 import com.johnny.learn.entity.MainListDto
-import com.johnny.learn.ui.button.ButtonViewActivity
-import com.johnny.learn.ui.image.ImageViewActivity
-import com.johnny.learn.ui.dataview.DataView1Activity
-import com.johnny.learn.ui.text.TextViewActivity
-import com.johnny.learn.ui.textfield.TextFieldActivity
-import com.johnny.learn.ui.theme.background800
-import com.johnny.learn.ui.theme.shimmerHighLight
-import com.johnny.learn.util.view.UserBar
-import com.skydoves.landscapist.ShimmerParams
-import com.skydoves.landscapist.coil.CoilImage
 
 //函数带有 @Composable 注释。
 // 所有可组合函数都必须带有此注释；

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.primarySurface
-import com.johnny.learn.R
 import com.johnny.learn.ui.theme.LearnComposeTheme
 
 /**

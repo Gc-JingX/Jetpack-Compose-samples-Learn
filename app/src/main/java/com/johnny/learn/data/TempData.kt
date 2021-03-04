@@ -16,7 +16,6 @@
 
 package com.johnny.learn.data
 
-import android.content.Context
 import com.johnny.learn.entity.MainListDto
 import com.johnny.learn.ui.button.ButtonViewActivity
 import com.johnny.learn.ui.dataview.DataView1Activity
@@ -28,7 +27,6 @@ import com.johnny.learn.ui.layout.RowActivity
 import com.johnny.learn.ui.main.state.MainUiState
 import com.johnny.learn.ui.text.TextViewActivity
 import com.johnny.learn.ui.textfield.TextFieldActivity
-import java.lang.RuntimeException
 
 
 private val initMainDatas = listOf(
