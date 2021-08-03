@@ -39,10 +39,11 @@ fun ImageViewContent() {
             maxColumnWidth = 220.dp,
             modifier = Modifier.padding(4.dp)
         ) {
-            PicPoster( )
-            PicPoster( )
-            PicPoster( )
-            PicPoster( )
+            imageComposable()
+//            PicPoster( )
+//            PicPoster( )
+//            PicPoster( )
+//            PicPoster( )
         }
     }
 //    LazyColumn(modifier = Modifier
