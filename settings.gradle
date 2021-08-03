@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Learn Compose"
 include ':demo'
+include ':base_util:Lib_base'
+include ':module_a'
+include ':module_b'
+include ':lunch'
